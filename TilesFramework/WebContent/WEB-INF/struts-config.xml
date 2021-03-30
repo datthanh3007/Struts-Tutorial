@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="User" type="model.User" />
+	</form-beans>
+	<action-mappings>
+		<action path="/User"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/pages/user/user-form.jsp" />
+		<action path="/adduser"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/pages/adduser/add-userform/adduserform_body.jsp" />
+
+		<action path="/add-user-method"
+			type="controller.ActionUsers" parameter="addUserMethod" name ="User" validate="true" 
+			input="/pages/adduser/add-userform/adduserform_body.jsp">
+			<forward name="addmethod" path="/pages/adduser/add-userform/adduserform_body.jsp" redirect="true"/> 
+			</action>
+	</action-mappings>
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config"
+			value="/WEB-INF/tiles-definitions.xml" />
+	</plug-in>
+
+</struts-config>

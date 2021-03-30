@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="User" type="model.User" />
+	</form-beans>
+	<global-forwards>
+	</global-forwards>
+	<action-mappings>
+
+		<action path="/view-user" type="controller.ActionUser"
+			parameter="FindUser">
+			<forward name="finduser" path="/User/viewUser.jsp" />
+		</action>
+		<action path="/list-user" type="controller.ActionUser"
+			parameter="listUser">
+			<forward name="listuser" path="/User/listUser.jsp" />
+		</action>
+		<action path="/add-user" type="controller.ActionUser"
+			parameter="addUser">
+			<forward name="adduser" path="/User/addUser.jsp" />
+		</action>
+
+		<action path="/add-user-method" type="controller.ActionUser"
+			parameter="addUserMethod" name="User" validate="true"
+			input="/User/addUser.jsp">
+			<forward name="addusermethod" path="/list-user.do"
+				redirect="true" />
+		</action>
+		
+		<action path="/edit-user-method" type="controller.ActionUser"
+			parameter="editUserMethod" name="User" validate="true"
+			input="/User/updateUser.jsp">
+			<forward name="editusermethod" path="/list-user.do"
+				redirect="true" />
+		</action>
+
+		<action path="/delete-user" type="controller.ActionUser"
+			parameter="deleteUser">
+			<!-- <forward name="deleteuser" path="/list-user.do" redirect="true"/> -->
+		</action>
+		
+		<action path="/update-user" type="controller.ActionUser"
+			parameter="updateUser">
+			<forward name="updateuser" path="/User/updateUser.jsp" />
+		</action>
+
+
+	</action-mappings>
+	<message-resources parameter="messages"
+		null="false" />
+</struts-config>
